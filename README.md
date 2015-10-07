@@ -1,1 +1,3 @@
-# cloud-project
+# Cloud Project (Focusing on Scalability)
+
+This application Cloud-based query processor based on Twitter messages. Its core principle is to let its users enter "queries", specifying multiple "hash tags" (i.e., keywords that are manually emphasised by the authors of Twitter users). Once submitted to the application, a query may become a "live filter" applied against the inflow of Twitter messages. Any message which passes through the filter defined by the query (i.e., contains the stated hash tags and comes from the specified region) shall then be displayed on the screen. A query shall remain "active" (i.e., continue to filter incoming messages) until it is manually revoked by the end user of the application.
