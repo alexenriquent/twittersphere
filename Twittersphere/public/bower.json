@@ -15,7 +15,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "angular-material": "~0.11.2",
-    "angular-socket-io": "~0.7.0"
+    "angular-material": "~0.5.1",
+    "angular-socket-io": "~0.7.0",
+    "hammerjs": "~2.0.4"
   }
 }
