@@ -2,7 +2,8 @@
 <html>
 <head>
   <!-- Meta -->
-  <meta name="viewpoint" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="viewpoint" content="initial-scale=1, maximum-scale=1"/>
+  <meta name="viewport" content="width=device-width">
   <meta name="author" content="Thanat Chokwijitkul"/>
   <meta name="description" content="A Cloud-based query processor based on Twitter messages."/>
   <!-- CSS Stylesheets -->
@@ -12,16 +13,17 @@
   <title>Twittersphere</title>
 </head>
 <body ng-app="twittersphereApp">
-  <h1>Twittersphere</h1>
-  <hr/>
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">Twittersphere</div>
+  </md-toolbar>
 
   <div ng-controller="StreamCtrl" class="panels">
     
     <form ng-submit="addCollection(hashtags)" flex>
       <div id="input-container" layout="vertical" layout-sm="horizontal" layout-padding layout-align="left-center">
       <span class="title">Search:</span>
-      <md-text-float label="Search (#love)" ng-model="hashtags"></md-text-float>
-      <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!hashtags" aria-label="Add New Search">Add New Search</md-button>
+      <md-text-float label="hashtags" ng-model="hashtags"></md-text-float>
+      <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!hashtags" aria-label="Add New Search">Stream</md-button>
       </div> <!-- input-container -->
     </form>
 
@@ -35,23 +37,23 @@
           </div> <!-- layout-padding -->
 
           <div flex class="collection-text">
-            <md-card ng-repeat="tweet in tweets track by $index">
-              <div layout="horizontal" layout-align="center center">
-                <div id="profile-image-container" flex="33">
-                  <div id="profile-image">
-                    <img ng-src="{{tweet.user.profile_image_url}}" class="md-card-image">
-                  </div> <!-- profile-image -->
-                </div> <!-- profile-image-container -->
-                <div id="screen-name-container" flex>
-                  <div id="screen-name">
-                    <h2>{{tweet.user.screen_name}}</h2>
-                  </div> <!-- screen-name -->
-                </div> <!-- screen-name-container -->
-              </div> <!-- horizontal layout -->
-              <p layput-padding>
-                {{tweet.text}}
-              </p>
-            </md-card>
+
+            <md-list>
+              <md-item ng-repeat="tweet in tweets track by $index">
+                <md-item-content>
+                  <div class="md-tile-left inset">
+                    <img id="avatar" ng-src="{{tweet.user.profile_image_url}}" class="md-avatar" alt="{{tweet.user.screen_name}}">
+                  </div>
+                  <div class="md-tile-content">
+                    <h3>{{tweet.user.screen_name}}</h3>
+                    <p>{{tweet.text}}</p>
+                  </div>
+                </md-item-content>
+                <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+              </md-item>
+            </md-list>
+
           </div> <!-- collection-text -->
         </div> <!-- collection.style -->
       </md-tab> 
@@ -67,6 +69,7 @@
   <script type="text/javascript" src="/libs/bower_components/angular-material/angular-material.js"></script>
   <script type="text/javascript" src="/libs/bower_components/angular-socket-io/socket.min.js"></script>
   <script type="text/javascript" src="/libs/bower_components/hammerjs/hammer.js"></script>
+  <script type="text/javascript" src="/libs/bower_components/bootstrap-css/js/bootstrap.js"></script>
   <script type="text/javascript" src="/javascripts/app.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/stream-controller.js"></script>
 
