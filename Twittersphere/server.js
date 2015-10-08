@@ -23,6 +23,7 @@ var twitter = new twit({
 
 /** Add connection to the public folder */
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public/views'));
 
 /** Static route to the main page */
 app.get('/', function(req, res) {
@@ -32,22 +33,22 @@ app.get('/', function(req, res) {
 /** Configure socket to start listening for an incomming connection */
 io.on('connection', function(socket) {
   searches[socket.id] = {};
-  socket.on('q', function(q) {
-    if (!searches[socket.id][q]) {
-      console.log('New Search:', q);
+  socket.on('query', function(query) {
+    if (!searches[socket.id][query]) {
+      console.log('New Search:', query);
 
       var stream = twitter.stream('statuses/filter', {
-        track: q
+        track: query
       });
 
       /** Emit a tweet event */
       stream.on('tweet', function(tweet) {
-        socket.emit('tweet_' + q, tweet);
+        socket.emit('tweet_' + query, tweet);
       });
 
       /** Stream limit has reached */
       stream.on('limit', function(limitMessage) {
-        console.log('Limit on query' + q + 'for user: ' 
+        console.log('Limit on query' + query + 'for user: ' 
           + socket.id + 'has been reached.');
       });
 
@@ -67,15 +68,15 @@ io.on('connection', function(socket) {
       });
 
       /** Save the current query */
-      searches[socket.id][q] = stream;
+      searches[socket.id][query] = stream;
     }
   });
   
   /** Remove event on the socket */
-  socket.on('remove', function(q) {
-    searches[socket.id][q].stop();
-    delete searches[socket.id][q];
-    console.log('Remove search:', q);
+  socket.on('remove', function(query) {
+    searches[socket.id][query].stop();
+    delete searches[socket.id][query];
+    console.log('Remove search:', query);
   });
 
   /** Disconnect and stop all the streams */
