@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Meta -->
+  <meta name="viewpoint" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="author" content="Thanat Chokwijitkul"/>
+  <meta name="description" content="A Cloud-based query processor based on Twitter messages."/>
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/themes/default-theme.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <title>Twittersphere</title>
+</head>
+<body ng-app="twittersphereApp">
+  <h1>Twittersphere</h1>
+  <hr/>
+
+  <div ng-controller="AppCtrl" class="dynamicTabs">
+    
+    <form ng-submit="addTab(tTitle, tContent)" flex>
+      <div id="input-container" layout="vertical" layout-sm="horizontal" layout-padding layout-align="left-center">
+      <span class="title">Search:</span>
+      <md-text-float label="Tab Name" ng-model="tTitle"></md-text-float>
+      <md-text-float label="Search (#love)" ng-model="tContent"></md-text-float>
+      <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!tTitle || !tContent" aria-label="Add New Search">Add New Search</md-button>
+      </div> <!-- input-container -->
+    </form>
+
+    <md-tabs selected="selectedIndex">
+      <md-tab ng-repeat="tab in tabs" on-select="onTabSelected(tab)" label="{{tab.title}}">
+        <div ng-class="tab.style" layout="vertical" layout-fill layout-align="center center">
+
+          <div layout-padding>
+            <md-button aria-label="Remove" class="remove-tab md-warn" ng-disabled="tabs.length == 1" ng-click="removeTab(tab)">Remove
+            </md-button>
+          </div> <!-- layout-padding -->
+
+          <div flex class="tab-text">
+            <md-card ng-repeat="t in tweets track by $index">
+              <div layout="horizontal" layout-align="center center">
+                <div id="profile-image-container" flex="33">
+                  <div id="profile-image">
+                    <img ng-src="{{t.user.profile_image_url}}" class="md-card-image">
+                  </div> <!-- profile-image -->
+                </div> <!-- profile-image-container -->
+                <div id="screen-name-container" flex>
+                  <div id="screen-name">
+                    <h2>{{t.user.screen_name}}</h2>
+                  </div> <!-- screen-name -->
+                </div> <!-- screen-name-container -->
+              </div> <!-- horizontal layout -->
+              <p layput-padding>
+                {{t.text}}
+              </p>
+            </md-card>
+          </div> <!-- tab-text -->
+        </div> <!-- tab.style -->
+      </md-tab> 
+    </md-tabs> 
+
+  </div> <!-- dynamicTabs -->
+
+  <!-- JavaScripts -->
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-material/angular-material.js"></script>
+  <script type="text/javascript" src="/bower_components/angular-socket-io/socket.min.js"></script>
+  <script type="text/javascript" src="/bower_components/hammerjs/hammer.js"></script>
+  <script type="text/javascript" src="/javascripts/app.js"></script>
+
+</body>
+</html>
