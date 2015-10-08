@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
       console.log('New Search:', q);
 
       var stream = twitter.stream('statuses/filter', {
-        track: q;
+        track: q
       });
 
       /** Emit a tweet event */
@@ -53,7 +53,7 @@ io.on('connection', function(socket) {
 
       /** Warnings on the stream */
       stream.on('warning', function(warning) {
-        console..log('warning', warning);
+        console.log('warning', warning);
       });
 
       /** Twitter client tries to reconnect in case of connection failure */
