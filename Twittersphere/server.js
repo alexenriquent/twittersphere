@@ -58,13 +58,13 @@ io.on('connection', function(socket) {
       });
 
       /** Twitter client tries to reconnect in case of connection failure */
-      stream.on('reconnect', function(request, response, connectInterval) {
-        console.log('reconnect :: connectInterval', connectInterval);
+      stream.on('reconnect', function(request, response, interval) {
+        console.log('reconnect interval:', interval);
       });
 
       /** Stream is disconnected */
-      stream.on('disconnect', function(disconnectMessage) {
-        console.log('disconnect', disconnectMessage);
+      stream.on('disconnect', function(message) {
+        console.log('disconnect', message);
       });
 
       /** Save the current query */

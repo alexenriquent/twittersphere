@@ -39,23 +39,19 @@ md-card .md-card-image {
   width: 100px;
 }
 
-.dynamicTabs md-tabs .md-view {
+.panels md-tabs .md-view {
   background: #eeeeee;
 }
 
-.dynamicTabs .tab-text {
+.panels .tab-text {
   margin-bottom: 32px;
 }
 
-.dynamicTabs .md-button {
+.panels .md-button {
   display: block;
 }
 
-.dynamicTabs .tab1 {
-  background-color: #ffffff;
-}
-
-.dynamicTabs .title {
+.panels .title {
   margin-top: 25px;
   padding-top: 8px;
   padding-right: 8px; 
@@ -63,23 +59,23 @@ md-card .md-card-image {
   text-transform: uppercase;
 }
 
-.dynamicTabs [layout-align] > * {
+.panels [layout-align] > * {
   margin-left: 8px;
 }
 
-.dynamicTabs form > [layout] > * {
+.panels form > [layout] > * {
   margin-left: 8px;
 }
 
-.dynamicTabs .long > input {
+.panels .long > input {
   width: 250px;
 }
 
-.dynamicTabs .md-button {
+.panels .md-button {
   max-height: 30px;
 }
 
-.dynamicTabs .md-button.add-tab {
+.panels .md-button.add-tab {
   margin-top: 20px;
   max-height: 30px !important;
 }

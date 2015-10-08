@@ -15,27 +15,26 @@
   <h1>Twittersphere</h1>
   <hr/>
 
-  <div ng-controller="StreamCtrl" class="dynamicTabs">
+  <div ng-controller="StreamCtrl" class="panels">
     
-    <form ng-submit="addTab(tTitle, tContent)" flex>
+    <form ng-submit="addCollection(hashtags)" flex>
       <div id="input-container" layout="vertical" layout-sm="horizontal" layout-padding layout-align="left-center">
       <span class="title">Search:</span>
-      <md-text-float label="Tab Name" ng-model="tTitle"></md-text-float>
-      <md-text-float label="Search (#love)" ng-model="tContent"></md-text-float>
-      <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!tTitle || !tContent" aria-label="Add New Search">Add New Search</md-button>
+      <md-text-float label="Search (#love)" ng-model="hashtags"></md-text-float>
+      <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!hashtags" aria-label="Add New Search">Add New Search</md-button>
       </div> <!-- input-container -->
     </form>
 
     <md-tabs selected="selectedIndex">
-      <md-tab ng-repeat="tab in tabs" on-select="onTabSelected(tab)" label="{{tab.title}}">
-        <div ng-class="tab.style" layout="vertical" layout-fill layout-align="center center">
+      <md-tab ng-repeat="collection in collections" on-select="onCollectionSelected(collection)" label="{{collection.title}}">
+        <div ng-class="collection.style" layout="vertical" layout-fill layout-align="center center">
 
           <div layout-padding>
-            <md-button aria-label="Remove" class="remove-tab md-warn" ng-disabled="tabs.length == 1" ng-click="removeTab(tab)">Remove
+            <md-button aria-label="Remove" class="remove-collection md-warn" ng-disabled="collections.length == 1" ng-click="removeCollection(collection)">Remove
             </md-button>
           </div> <!-- layout-padding -->
 
-          <div flex class="tab-text">
+          <div flex class="collection-text">
             <md-card ng-repeat="tweet in tweets track by $index">
               <div layout="horizontal" layout-align="center center">
                 <div id="profile-image-container" flex="33">
@@ -53,12 +52,12 @@
                 {{tweet.text}}
               </p>
             </md-card>
-          </div> <!-- tab-text -->
-        </div> <!-- tab.style -->
+          </div> <!-- collection-text -->
+        </div> <!-- collection.style -->
       </md-tab> 
     </md-tabs> 
 
-  </div> <!-- dynamicTabs -->
+  </div> <!-- panels -->
 
   <!-- JavaScripts -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>

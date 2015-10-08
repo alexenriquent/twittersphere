@@ -1,36 +1,35 @@
 /** Controller for streaming inflow Twitter messages */
 app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
-  $scope.tabs = [];
+  $scope.collections = [];
   $scope.selectedIndex = 0;
-  $scope.onTabSelected = onTabSelected;
+  $scope.onCollectionSelected = onCollectionSelected;
 
-  $scope.addTab = function(title, query) {
-    var tabs = $scope.tabs;
-    var style = 'tab' + (tabs.length % 4 + 1);
-    var tab = {
-      title: title,
-      active: true,
+  $scope.addCollection = function(query) {
+    var collections = $scope.collections;
+    var style = 'collection' + (collections.length % 4 + 1);
+    var collection = {
+      title: 'Collection ' + (collections.length + 1),
       style: style,
-      query: query
+      query: query,
+      active: true
     };
 
-    if (!duplicate(tab)) {
-      tabs.push(tab);
-      $scope.tContent = '';
-      $scope.tTitle = '';
-      spawnSearch(query, tab);
+    if (!duplicate(collection)) {
+      collections.push(collection);
+      $scope.hashtags = '';
+      stream(query, collection);
     } else {
       alert('The query already exists');
     }
   };
 
-  $scope.removeTab = function(tab) {
-    var tabs = $scope.tabs;
-    for (var i = 0; i < tabs.length; i++) {
-      if (tab.title == tabs[i].title) {
-        tabs.splice(i, 1);
+  $scope.removeCollection = function(collection) {
+    var collections = $scope.collections;
+    for (var i = 0; i < collections.length; i++) {
+      if (collection.title == collections[i].title) {
+        collections.splice(i, 1);
         $scope.selectedIndex = (i == 0 ? 1 : i - 1);
-        socket.emit('remove', tab.query);
+        socket.emit('remove', collection.query);
       }
     }
   };
@@ -39,40 +38,39 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
     if ($event.which !== 13) {
       return;
     }
-    if ($scope.tTitle) {
-      $scope.addTab($scope.tTitle, $scope.tContent);
+    if ($scope.hashtags) {
+      $scope.addCollection($scope.hashtags);
     }
   };
 
-  function onTabSelected(tab) {
+  function onCollectionSelected(collection) {
     $scope.selectedIndex = this.$index;
-    updateScope(tab);
+    update(collection);
   }
 
-  function updateScope(tab) {
-    if ($scope.tabs[$scope.selectedIndex] && 
-      $scope.tabs[$scope.selectedIndex].query == tab.query) {
-      $scope.tweets = $scope['tweets_' + tab.query];
+  function update(collection) {
+    if ($scope.collections[$scope.selectedIndex] && 
+      $scope.collections[$scope.selectedIndex].query == collection.query) {
+      $scope.tweets = $scope['tweets_' + collection.query];
     }
   }
 
-  function spawnSearch(query, tab) {
+  function stream(query, collection) {
     socket.emit('query', query);
     $scope['tweets_' + query] = [];
     socket.on('tweet_' + query, function(tweet) {
-      console.log(query, tweet.id);
       if ($scope['tweets_' + query].length == 10) {
         $scope['tweets_' + query].shift();
       }
       $scope['tweets_' + query] = $scope['tweets_' + query].concat(tweet);
-      updateScope(tab);
+      update(collection);
     });
   }
 
-  function duplicate(tab) {
-    var tabs = $scope.tabs;
-    for (var i = 0; i < tabs.length; i++) {
-      if (tab.query == tabs[i].query) {
+  function duplicate(collection) {
+    var collections = $scope.collections;
+    for (var i = 0; i < collections.length; i++) {
+      if (collection.query == collections[i].query) {
         return true;
       }
     }
