@@ -7,6 +7,12 @@ This application is a cloud-based query processor and sentiment analyser based o
 
 Architecture Diagram and Proposed Phases of Implementation
 
+Figure 1: The application architecture diagram
+
+The above diagram is the architecture of the application to be implemented. When a connection is established, the application will start streaming and analysing incoming tweets. The process will remain active until it is revoked by the end user.
+
+Figure 2: The architecture diagrams (before and after scaling)
+
 The application will be implemented on top of the Microsoft Azure VM (IaaS Cloud). The Azure load balancer will be used as a service to randomly distribute the load of web request traffic across multiple web roles or instances when automated scaling is needed.  
 
 In case of deployment, the application will be deployed via a Docker container on top of Ubuntu Server VM on Azure.
@@ -19,7 +25,7 @@ In terms of real usage, streaming inflow Twitter messages filtered by a set of h
 
 List of Service and Data APIs to be utilised
 
-Twitter Streaming API - This API allows developers to access the global stream of tweet data. This application will use the public streams end point, which streams the public data flowing through Twitter. The service will be implemented on the server side using a Twitter client library (twitter, ntwitter or twit).
+Twitter Streaming API - This API allows developers to access the global stream of tweet data. This application will use the public streams end point, which streams the public data flowing through Twitter. The service will be implemented on the server side using a Twitter client library (twitter or twit).
 
 Server Side and Client Side Processing
 
@@ -34,19 +40,17 @@ Client Side
 • AngularJS - A JavaScript framework for single-page web applications.
 
 Essential Modules 
-Sentiment analysis modules - One of the following modules will be used as a natural language processor (NLP). These modules need to be tested first in terms of its capability to analyse data (others are provided as alternatives).
+Sentiment analysis modules - One of the following modules will be used as a natural language processor (NLP). These modules need to be tested first in terms of its capability to analyse data (options are provided as alternatives).
 Natural - A natural language processing library for Node.js. It can be used for tokenising, stemming, classification, phonetics, tf-idf, WordNet, string similarity and inflections.
 Sentiment - This module uses the AFINN-111 word list to perform sentiment analysis.
 
-Twitter - The following modules are almost identical in terms of usage. One of these modules will be used to stream inflow Twitter messages (others are provided as alternatives).
+Twitter - The following modules are almost identical in terms of usage. One of these modules will be used to stream inflow Twitter messages (options are provided as alternatives).
 twitter - An asynchronous client library for the Twitter REST and Streaming APIs.
-ntwitter - An improved version of the node-twitter module, it is also a library for Twitter REST and Streaming APIs.
 twit - A Twitter API client which supports both the REST and Streaming APIs.
 
 Data Storage
-• MongoDB (Mongoose module) - A NoSQL database, it stores data as JSON-like documents with dynamic schemas, which is called the format BSON. This will be used to store the result of sentiment analysis of a collection of hashtags.
+MongoDB (Mongoose module) - A NoSQL database, it stores data as JSON-like documents with dynamic schemas, which is called the format BSON. This will be used to store the result of sentiment analysis of a collection of hashtags.
+DiskDB is an alternative in case that MongoDB does not function as expected.
 
 Visualisation
 • d3js - This library will be used to produce interactive data visualisation in the application using the result from sentiment analysis.
-
-
