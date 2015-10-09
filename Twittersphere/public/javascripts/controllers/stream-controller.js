@@ -57,10 +57,11 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
   }
 
   function stream(query, collection) {
+    var limit = 10;
     socket.emit('query', query);
     $scope['tweets_' + query] = [];
     socket.on('tweet_' + query, function(tweet) {
-      if ($scope['tweets_' + query].length == 10) {
+      if ($scope['tweets_' + query].length == limit) {
         $scope['tweets_' + query].shift();
       }
       $scope['tweets_' + query] = $scope['tweets_' + query].concat(tweet);
