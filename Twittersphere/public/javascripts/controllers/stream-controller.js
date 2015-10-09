@@ -1,8 +1,18 @@
 /** Controller for streaming inflow Twitter messages */
 app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
+  var numEvents = 13;
   $scope.collections = [];
   $scope.selectedIndex = 0;
   $scope.onCollectionSelected = onCollectionSelected;
+
+  $scope.submit = function($event) {
+    if ($event.which !== numEvents) {
+      return;
+    }
+    if ($scope.hashtags) {
+      $scope.addCollection($scope.hashtags);
+    }
+  };
 
   $scope.addCollection = function(query) {
     var collections = $scope.collections;
@@ -31,15 +41,6 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
         $scope.selectedIndex = (i == 0 ? 1 : i - 1);
         socket.emit('remove', collection.query);
       }
-    }
-  };
-
-  $scope.submit = function($event) {
-    if ($event.which !== 13) {
-      return;
-    }
-    if ($scope.hashtags) {
-      $scope.addCollection($scope.hashtags);
     }
   };
 
