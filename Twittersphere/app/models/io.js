@@ -1,28 +1,72 @@
-/** Required dependency */
+/** Required dependencies */
+var io = require('socket.io')
 var twitter = require('./twitter');
+var sentiment = require('./sentiment');
+var db = require('diskdb');
+
+db = db.connect('app/db', ['tweets', 'sentiments']);
 
 /** Export the module */
 module.exports = function(server) {
   /** Initialise socket.io */
-  var io = require('socket.io')(server);
+  io = io(server);
   
   /** Searches */
   var searches = {};
 
   io.on('connection', function(socket) {
+    /** Tweet counter */
+    var tweetCount = 0;
     searches[socket.id] = {};
     socket.on('query', function(query) {
       if (!searches[socket.id][query]) {
-        console.log('New Search:', query);
+        console.log('Search:', query);
 
         /** Stream with a specified query */
         var stream = twitter.stream('statuses/filter', {
           track: query
         });
-
+    
         /** Emit a tweet event */
         stream.on('tweet', function(tweet) {
-          socket.emit('tweet_' + query, tweet);
+          if (tweet.lang === 'en') {
+            var result = sentiment(tweet.text);
+            var tweetData = {
+              text: tweet.text,
+              sentiment: {
+                score: result.score,
+                comparative: result.comparative,
+                words: result.words,
+                positive: result.positive,
+                negative: result.negative
+              }
+            };
+
+            db.tweets.save(tweetData);
+            socket.emit('tweet_' + query, tweet);
+            tweetCount++;
+
+            var meanScore = 0;
+            var meanComparative = 0;
+            var tweets = db.tweets.find();
+
+            for (var i = 0; i < tweets.length; i++) {
+              meanScore = meanScore + tweets[i].sentiment.score;
+              meanComparative = meanComparative 
+                + tweets[i].sentiment.comparative;
+            }
+
+            meanScore /= tweetCount;
+            meanComparative /= tweetCount;
+
+            var sentimentData = {
+              score: meanScore,
+              comparative: meanComparative,
+              numTweets: tweetCount
+            };
+
+            db.sentiments.save(sentimentData);
+          }
         });
 
         /** Twitter client tries to reconnect in case of connection failure */
@@ -32,8 +76,7 @@ module.exports = function(server) {
 
         /** Stream limit has reached */
         stream.on('limit', function(message) {
-          console.log('Limit on query' + query + 'for user: ' 
-            + socket.id + 'has been reached.');
+          console.log('Limit for ' + socket.id + ' has been reached.');
         });
 
         /** Stream is disconnected */
@@ -60,7 +103,9 @@ module.exports = function(server) {
         delete searches[socket.id][key];
       }
       delete searches[socket.id];
+      console.log('Number of Tweets:', tweetCount);
       console.log('Remove', socket.id);
+      tweetCount = 0;
     });
   });
 };
