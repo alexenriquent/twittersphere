@@ -1,6 +1,6 @@
 /** Required dependencies */
 var http = require('http');
-var app = require('./app/express');
+var app = require('./config/express');
 var server = http.Server(app);
 var io = require('./app/models/io')(server);
 
