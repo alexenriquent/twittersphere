@@ -24,8 +24,6 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
       active: true
     };
 
-    console.log(collection);
-
     if (!duplicate(collection)) {
       collections.push(collection);
       $scope.hashtags = '';
