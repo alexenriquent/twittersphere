@@ -1,11 +1,11 @@
 /** Controller for streaming inflow Twitter messages */
 app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
-  var numEvents = 13;
   $scope.collections = [];
   $scope.selectedIndex = 0;
   $scope.onCollectionSelected = onCollectionSelected;
 
   $scope.submit = function($event) {
+    var numEvents = 13;
     if ($event.which !== numEvents) {
       return;
     }
@@ -23,6 +23,8 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
       query: query,
       active: true
     };
+
+    console.log(collection);
 
     if (!duplicate(collection)) {
       collections.push(collection);
