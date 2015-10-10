@@ -69,6 +69,10 @@ module.exports = function(server) {
             };
 
             db.sentiments.save(sentimentData);
+
+            var resultLength = db.sentiments.find({socket: socket.id}).length;
+            var resultData = db.sentiments.find({socket: socket.id})[resultLength - 1];
+            socket.emit('analysis', resultData);
           }
         });
 
