@@ -32,6 +32,8 @@ module.exports = function(server) {
           if (tweet.lang === 'en') {
             var result = sentiment(tweet.text);
             var tweetData = {
+              socket: socket.id,
+              tweetNum: tweetCount + 1,
               text: tweet.text,
               sentiment: {
                 score: result.score,
@@ -44,11 +46,10 @@ module.exports = function(server) {
 
             db.tweets.save(tweetData);
             socket.emit('tweet_' + query, tweet);
-            tweetCount++;
 
             var meanScore = 0;
             var meanComparative = 0;
-            var tweets = db.tweets.find();
+            var tweets = db.tweets.find({socket: socket.id});
 
             for (var i = 0; i < tweets.length; i++) {
               meanScore = meanScore + tweets[i].sentiment.score;
@@ -56,13 +57,15 @@ module.exports = function(server) {
                 + tweets[i].sentiment.comparative;
             }
 
+            tweetCount++;
             meanScore /= tweetCount;
             meanComparative /= tweetCount;
 
             var sentimentData = {
+              socket: socket.id,
+              tweetNum: tweetCount,
               score: meanScore,
-              comparative: meanComparative,
-              numTweets: tweetCount
+              comparative: meanComparative
             };
 
             db.sentiments.save(sentimentData);
