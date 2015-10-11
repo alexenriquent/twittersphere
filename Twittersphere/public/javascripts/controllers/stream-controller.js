@@ -57,7 +57,7 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
   }
 
   function stream(query, collection) {
-    var limit = 10;
+    var limit = 15;
     socket.emit('query', query);
     $scope['tweets_' + query] = [];
     socket.on('tweet_' + query, function(tweet) {
