@@ -36,7 +36,7 @@
 
     <div ng-controller="StreamCtrl" class="panels">
       
-      <form ng-submit="addCollection(hashtags)" flex>
+      <form ng-submit="add(hashtags)" flex>
         <div id="input-container" layout="vertical" layout-sm="horizontal" layout-padding layout-align="left-center">
         <span id="search-title" class="title">Search:</span>
         <md-text-float label="hashtags" ng-model="hashtags"></md-text-float>
@@ -56,11 +56,11 @@
       </div>
 
       <md-tabs selected="selectedIndex" md-theme="blue">
-        <md-tab ng-repeat="collection in collections" on-select="onCollectionSelected(collection)" label="{{collection.title}}">
+        <md-tab ng-repeat="collection in collections" on-select="selected(collection)" label="{{collection.title}}">
           <div id="content-container" ng-class="collection.style" layout="vertical" layout-fill layout-align="center center">
 
             <div layout-padding>
-              <md-button aria-label="Remove" class="remove-collection md-warn" ng-disabled="collections.length == 0" ng-click="removeCollection(collection)">Remove
+              <md-button aria-label="Remove" class="remove-collection md-warn" ng-disabled="collections.length == 0" ng-click="remove(collection)">Remove
               </md-button>
             </div> <!-- layout-padding -->
 

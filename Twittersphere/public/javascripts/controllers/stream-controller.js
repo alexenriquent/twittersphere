@@ -2,7 +2,7 @@
 app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
   $scope.collections = [];
   $scope.selectedIndex = 0;
-  $scope.onCollectionSelected = onCollectionSelected;
+  $scope.selected = selected;
 
   $scope.submit = function($event) {
     var numEvents = 13;
@@ -14,11 +14,11 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
     }
   };
 
-  $scope.addCollection = function(query) {
+  $scope.add = function(query) {
     var collections = $scope.collections;
     var style = 'collection' + (collections.length % 4 + 1);
     var collection = {
-      title: 'Collection ' + (collections.length + 1),
+      title: query,
       style: style,
       query: query,
       active: true
@@ -33,7 +33,7 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
     }
   };
 
-  $scope.removeCollection = function(collection) {
+  $scope.remove = function(collection) {
     var collections = $scope.collections;
     for (var i = 0; i < collections.length; i++) {
       if (collection.title == collections[i].title) {
@@ -44,7 +44,7 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
     }
   };
 
-  function onCollectionSelected(collection) {
+  function selected(collection) {
     $scope.selectedIndex = this.$index;
     update(collection);
   }
