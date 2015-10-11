@@ -113,6 +113,8 @@ module.exports = function(server) {
       console.log('Number of Tweets:', tweetCount);
       console.log('Remove', socket.id);
       tweetCount = 0;
+      db.tweets.remove({socket: socket.id});
+      db.sentiments.remove({socket: socket.id});
     });
   });
 };
