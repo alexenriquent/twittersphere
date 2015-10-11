@@ -1,0 +1,29 @@
+<md-tabs selected="selectedIndex" md-theme="blue">
+  <md-tab ng-repeat="collection in collections" on-select="selected(collection)" label="{{collection.title}}">
+    <div id="content-container" ng-class="collection.style" layout="vertical" layout-fill layout-align="center center">
+
+      <div layout-padding>
+        <md-button aria-label="Remove" class="remove-collection md-warn" ng-disabled="collections.length == 0" ng-click="remove(collection)">Remove
+        </md-button>
+      </div> <!-- layout-padding -->
+
+      <div flex class="collection-text">
+        <md-list>
+          <md-item ng-repeat="tweet in tweets track by $index">
+            <md-item-content>
+              <div class="md-tile-left inset">
+                <img id="avatar" ng-src="{{tweet.user.profile_image_url}}" class="md-avatar" alt="{{tweet.user.screen_name}}">
+              </div>
+              <div class="md-tile-content">
+                <h3>{{tweet.user.screen_name}}</h3>
+                <p>{{tweet.text}}</p>
+              </div>
+            </md-item-content>
+            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+          </md-item>
+        </md-list>
+      </div> <!-- collection-text -->
+    </div> <!-- collection.style -->
+  </md-tab> 
+</md-tabs> 

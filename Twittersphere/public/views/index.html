@@ -24,77 +24,18 @@
   <title>Twittersphere</title>
 </head>
 <body ng-app="twittersphereApp" class="mdl-body mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary-dark">
-      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-      </div>
-      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        <h1>Twittersphere</h1>
-      </div>
-      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-      </div>
-    </header>
+
+    <div ng-include="'/partials/header.html'"></div>
 
     <div ng-controller="StreamCtrl" class="panels">
       
-      <form ng-submit="add(hashtags)" flex>
-        <div id="input-container" layout="vertical" layout-sm="horizontal" layout-padding layout-align="left-center">
-        <span id="search-title" class="title">Search:</span>
-        <md-text-float label="hashtags" ng-model="hashtags"></md-text-float>
-        <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!hashtags" aria-label="Add New Search">Stream</md-button>
-        </div> <!-- input-container -->
-      </form>
+      <div ng-include="'/partials/query.html'"></div>
+      <div ng-include="'/partials/chart.html'"></div>
+      <div ng-include="'/partials/content.html'"></div>
 
-      <div ng-controller="ChartCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
-        <div class="row">
-          <div class="col-md-6">
-            <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
-          </div>
-        </div>
-        <div ng-model="result" ng-click="getNextLiveLine(result)">
-          {{result}}
-        </div>
-      </div>
-
-      <md-tabs selected="selectedIndex" md-theme="blue">
-        <md-tab ng-repeat="collection in collections" on-select="selected(collection)" label="{{collection.title}}">
-          <div id="content-container" ng-class="collection.style" layout="vertical" layout-fill layout-align="center center">
-
-            <div layout-padding>
-              <md-button aria-label="Remove" class="remove-collection md-warn" ng-disabled="collections.length == 0" ng-click="remove(collection)">Remove
-              </md-button>
-            </div> <!-- layout-padding -->
-
-            <div flex class="collection-text">
-
-              <md-list>
-                <md-item ng-repeat="tweet in tweets track by $index">
-                  <md-item-content>
-                    <div class="md-tile-left inset">
-                      <img id="avatar" ng-src="{{tweet.user.profile_image_url}}" class="md-avatar" alt="{{tweet.user.screen_name}}">
-                    </div>
-                    <div class="md-tile-content">
-                      <h3>{{tweet.user.screen_name}}</h3>
-                      <p>{{tweet.text}}</p>
-                    </div>
-                  </md-item-content>
-                  <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                  <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                </md-item>
-              </md-list>
-
-            </div> <!-- collection-text -->
-          </div> <!-- collection.style -->
-        </md-tab> 
-      </md-tabs> 
     </div> <!-- panels -->
 
-    <footer class="mdl-mega-footer mdl-color--primary-dark">
-      <div class="mdl-mega-footer--bottom-section">
-        <div class="mdl-logo">
-          Copyright and API details would be here.
-        </div>
-      </div>
-    </footer>
+    <div ng-include="'/partials/footer.html'"></div>
 
   <!-- JavaScripts -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>

@@ -1,0 +1,10 @@
+<div ng-controller="ChartCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
+  <div class="row">
+    <div class="col-md-6">
+      <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+    </div> <!-- column-md-6 -->
+  </div> <!-- row -->
+  <div ng-model="result" ng-click="getNextLiveLine(result)">
+    {{result}}
+  </div> <!-- result -->
+</div> <!-- ChartCtrl -->
