@@ -14,11 +14,12 @@ app.controller('ChartCtrl', ['$scope', 'socket', '$timeout', function($scope, so
 
   socket.on('analysis', function(data) {
     var timestamp = ((new Date()).getTime() / 1000) | 0;
-    $scope.result = [
+    var result = [
       {time: timestamp, y: data.score},
       {time: timestamp, y: data.comparative}
     ];
-    $scope.getNextLiveLine($scope.result);
+    $scope.result = data;
+    $scope.getNextLiveLine(result);
   });
 
   $scope.areaAxes = ['left','right','bottom'];
