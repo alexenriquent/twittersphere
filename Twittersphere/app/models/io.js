@@ -30,6 +30,7 @@ module.exports = function(server) {
     
         /** Emit a tweet event */
         stream.on('tweet', function(tweet) {
+          /** Filter the language (English only) */
           if (tweet.lang === 'en') {
             var result = sentiment(tweet.text);
             var tweetData = {
@@ -70,7 +71,6 @@ module.exports = function(server) {
             };
 
             db.sentiments.save(sentimentData);
-
             var resultLength = db.sentiments.find({socket: socket.id}).length;
             var resultData = db.sentiments.find({socket: socket.id})[resultLength - 1];
             socket.emit('analysis', resultData);
@@ -102,6 +102,9 @@ module.exports = function(server) {
       searches[socket.id][query].stop();
       delete searches[socket.id][query];
       console.log('Remove search:', query);
+      tweetCount = 0;
+      db.tweets.remove({socket: socket.id});
+      db.sentiments.remove({socket: socket.id});
     });
 
     /** Disconnect and stop all the streams */
