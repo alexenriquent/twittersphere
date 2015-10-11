@@ -4,6 +4,7 @@ var twitter = require('./twitter');
 var sentiment = require('./sentiment');
 var db = require('diskdb');
 
+/** Database connection */
 db = db.connect('app/db', ['tweets', 'sentiments']);
 
 /** Export the module */
