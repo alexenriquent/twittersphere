@@ -8,7 +8,6 @@ app.controller('ChartCtrl', ['$scope', 'socket', '$timeout', function($scope, so
   ];
 
   $scope.getNextLiveLine = function(data) {
-    console.log('getNextLiveLine()');
     $scope.realtimeLineFeed = data;
   }
 
