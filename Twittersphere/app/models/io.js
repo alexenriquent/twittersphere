@@ -1,11 +1,12 @@
 /** Required dependencies */
-var io = require('socket.io')
+var io = require('socket.io');
+var cpu = require('./cpu');
 var twitter = require('./twitter');
 var sentiment = require('./sentiment');
 var db = require('diskdb');
 
 /** Database connection */
-db = db.connect('src/app/db', ['tweets', 'sentiments']);
+db = db.connect('app/db', ['tweets', 'sentiments']);
 
 /** Export the module */
 module.exports = function(server) {
@@ -16,6 +17,14 @@ module.exports = function(server) {
   var searches = {};
 
   io.on('connection', function(socket) {
+    var interval = 1000;
+
+    setInterval(function() {
+      cpu.usage(interval, function(usage) {
+        io.emit('usage', usage);
+      });
+    }, interval);
+
     /** Tweet counter */
     var tweetCount = 0;
     searches[socket.id] = {};
