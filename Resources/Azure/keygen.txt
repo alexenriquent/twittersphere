@@ -1,0 +1,15 @@
+Generate SSH keys
+$ ssh-keygen -t rsa
+
+Generate a Key from an Existing OpenSSH Compatible Key
+$ openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
+
+Generate OpenSSL keys
+$ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
+
+Change the permissions on the private key
+$ chmod 600 myPrivateKey.key
+
+Connect to an Azure Virtual Machine
+$ ssh username@servicename.cloudapp.net -p <port>
+$ ssh -i  myPrivateKey.key -p <port> username@servicename.cloudapp.net
