@@ -1,5 +1,5 @@
 /** Controller for the live line chart */
-app.controller('ChartCtrl', ['$scope', 'socket', '$timeout', function($scope, socket, $timeout) {
+app.controller('ChartCtrl', ['$scope', 'socket', function($scope, socket) {
   var timestamp = ((new Date()).getTime() / 1000) | 0;
   
   $scope.realtimeLine = [
