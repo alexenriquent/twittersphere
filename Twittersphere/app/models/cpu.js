@@ -8,7 +8,7 @@ function average() {
 
   for (var i in cpus) {
     var cpu = cpus[i];
-    for (var time in cpu.times) {
+    for (time in cpu.times) {
       ticks += cpu.times[time];
     }
     idles += cpu.times.idle;

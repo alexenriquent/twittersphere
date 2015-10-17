@@ -1,0 +1,11 @@
+<div ng-controller="CPUCtrl">
+  <div class="row">
+  <div class="chart-title"><h2>CPU Usage</h2></div>
+    <div class="col-md-6">
+      <epoch-live-area chart-class="category10" chart-height="200" chart-data="realtimeArea" chart-stream="realtimeAreaFeed" chart-axes="areaAxes"></epoch-live-area>
+    </div> <!-- column-md-6 -->
+  </div> <!-- row -->
+  <div ng-model="usage" style="text-align: center">
+    {{usage}}
+  </div>
+</div>

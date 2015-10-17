@@ -30,15 +30,10 @@
     <div ng-controller="StreamCtrl" class="panels">
       
       <div ng-include="'/partials/query.html'"></div>
+      <!-- <div ng-include="'/partials/usage.html'"></div> -->
       <div ng-include="'/partials/chart.html'"></div>
-
-      <div ng-controller="CPUCtrl">
-        <div ng-model="usage" style="text-align: center">
-          {{usage}}
-        </div>
-      </div>
-
       <div ng-include="'/partials/content.html'"></div>
+      <div ng-include="'/partials/usage.html'"></div>
 
     </div> <!-- panels -->
 
@@ -62,6 +57,5 @@
   <script type="text/javascript" src="/javascripts/controllers/stream-controller.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/chart-controller.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/cpu-controller.js"></script>
-
 </body>
 </html>
