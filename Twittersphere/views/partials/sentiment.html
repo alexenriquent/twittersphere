@@ -1,8 +1,10 @@
-<div ng-controller="SentimentCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
+<div ng-controller="SentimentCtrl" layout="vertical" layout-padding>
   <div class="row">
     <div class="chart-title"><h2>Sentiment Analysis</h2></div>
     <div class="col-md-6">
+      <div style="width: 100%;">
       <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+      </div>
     </div> <!-- column-md-6 -->
   </div> <!-- row -->
   <div ng-model="result" style="text-align: center">

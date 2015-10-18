@@ -14,49 +14,70 @@
   <meta name="apple-mobile-web-app-title" content="Twittersphere">
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-pink.min.css">
   <link rel="stylesheet" type="text/css" href="/libs/bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" type="text/css" href="/libs/bower_components/angular-material/themes/cyan-theme.css">
   <link rel="stylesheet" type="text/css" href="/libs/bower_components/epoch/epoch.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <!--link to favicon -->
+  <link href="/images/twitter_icon.ico" rel="shortcut icon" />
   <title>Twittersphere</title>
 </head>
+
 <body ng-app="twittersphereApp" class="mdl-body mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 
-    <div ng-include="'/partials/header.html'"></div>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Twittersphere</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="#sen">Sentiment Analysis</a>
+        <a class="mdl-navigation__link" href="#asp">Aspects</a>
+        <a class="mdl-navigation__link" href="#feed">Twitter Feed</a>
+        <a class="mdl-navigation__link" href="#cpu">CPU Usage</a>
+      </nav>
+    </div>
+  </header>
 
+  <main class="mdl-layout__content">
     <div ng-controller="StreamCtrl" class="panels">
-      
-      <div ng-include="'/partials/query.html'"></div>
-      <div ng-include="'/partials/sentiment.html'"></div>
-      <div ng-include="'/partials/aspect.html'"></div>
-      <div ng-include="'/partials/content.html'"></div>
-      <div ng-include="'/partials/usage.html'"></div>
-
+          <div ng-include="'/partials/query.html'"></div>
+          <div id="sen" ng-include="'/partials/sentiment.html'"></div>
+          <div id="asp" ng-include="'/partials/aspect.html'"></div>
+          <div id="feed" ng-include="'/partials/content.html'"></div>
+          <div id="cpu" ng-include="'/partials/usage.html'"></div>
     </div> <!-- panels -->
 
+ 
     <div ng-include="'/partials/footer.html'"></div>
 
-  <!-- JavaScripts -->
-  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/angular/angular.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/angular-aria/angular-aria.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/angular-animate/angular-animate.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/angular-material/angular-material.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/angular-socket-io/socket.min.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/hammerjs/hammer.js"></script>
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/d3/d3.min.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/epoch/epoch.min.js"></script>
-  <script type="text/javascript" src="/libs/bower_components/ng-epoch/ng-epoch.js"></script>
-  <script type="text/javascript" src="/javascripts/app.js"></script>
-  <script type="text/javascript" src="/javascripts/services/socket-service.js"></script>
-  <script type="text/javascript" src="/javascripts/controllers/stream-controller.js"></script>
-  <script type="text/javascript" src="/javascripts/controllers/sentiment-controller.js"></script>
-  <script type="text/javascript" src="/javascripts/controllers/aspect-controller.js"></script>
-  <script type="text/javascript" src="/javascripts/controllers/cpu-controller.js"></script>
+  </main>
+</div>
+
+    <!-- JavaScripts -->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/angular-socket-io/socket.min.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/hammerjs/hammer.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/epoch/epoch.min.js"></script>
+    <script type="text/javascript" src="/libs/bower_components/ng-epoch/ng-epoch.js"></script>
+    <script type="text/javascript" src="/javascripts/app.js"></script>
+    <script type="text/javascript" src="/javascripts/services/socket-service.js"></script>
+    <script type="text/javascript" src="/javascripts/controllers/stream-controller.js"></script>
+    <script type="text/javascript" src="/javascripts/controllers/sentiment-controller.js"></script>
+    <script type="text/javascript" src="/javascripts/controllers/aspect-controller.js"></script>
+    <script type="text/javascript" src="/javascripts/controllers/cpu-controller.js"></script>
+
 </body>
 </html>

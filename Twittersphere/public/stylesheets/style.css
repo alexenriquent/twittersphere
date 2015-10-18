@@ -5,7 +5,7 @@ html, body {
 }
 
 .mdl-body .mdl-layout__header-row {
-  padding-left: 40px;
+  padding-left: 50px;
 }
 
 .mdl-body .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
@@ -228,4 +228,26 @@ html, body {
 
 .chart-title {
   text-align: center;
+}
+
+
+.footerLeft{
+  color: white;
+}
+
+.footerRight{
+  text-align: right;
+  color: white;
+}
+
+
+
+@media (max-width: 700px) {
+  .footerRight{
+    text-align: center;
+  }
+
+  .footerLeft{
+    text-align: center;
+  }
 }
