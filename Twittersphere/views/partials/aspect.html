@@ -1,0 +1,15 @@
+<div ng-controller="AspectCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
+  <div class="row">
+    <div class="chart-title"><h2>Aspects</h2></div>
+    <div class="col-md-6">
+      <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
+    </div> <!-- column-md-6 -->
+  </div> <!-- row -->
+  <div ng-model="aspect" style="text-align: center">
+    <p>
+      <strong>Positive Tweets:</strong> {{aspect.positive || 0}} &thinsp;&thinsp;&thinsp;
+      <strong>Neutral Tweets:</strong> {{aspect.neutral || 0}} &thinsp;&thinsp;&thinsp;
+      <strong>Neutral Tweets:</strong> {{aspect.negative || 0}}
+    </p>
+  </div> <!-- result -->
+</div> <!-- ChartCtrl -->

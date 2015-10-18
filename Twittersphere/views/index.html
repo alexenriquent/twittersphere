@@ -30,7 +30,8 @@
     <div ng-controller="StreamCtrl" class="panels">
       
       <div ng-include="'/partials/query.html'"></div>
-      <div ng-include="'/partials/chart.html'"></div>
+      <div ng-include="'/partials/sentiment.html'"></div>
+      <div ng-include="'/partials/aspect.html'"></div>
       <div ng-include="'/partials/content.html'"></div>
       <div ng-include="'/partials/usage.html'"></div>
 
@@ -54,7 +55,8 @@
   <script type="text/javascript" src="/javascripts/app.js"></script>
   <script type="text/javascript" src="/javascripts/services/socket-service.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/stream-controller.js"></script>
-  <script type="text/javascript" src="/javascripts/controllers/chart-controller.js"></script>
+  <script type="text/javascript" src="/javascripts/controllers/sentiment-controller.js"></script>
+  <script type="text/javascript" src="/javascripts/controllers/aspect-controller.js"></script>
   <script type="text/javascript" src="/javascripts/controllers/cpu-controller.js"></script>
 </body>
 </html>
