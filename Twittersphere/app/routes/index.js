@@ -7,6 +7,7 @@ router.get('/', function(req, res) {
   res.render('index', { });
 });
 
+/** Redirect all other routes to index.html */
 router.get('/*', function(req, res) {
   res.render('index', { });
 });
