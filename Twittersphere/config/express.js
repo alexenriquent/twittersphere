@@ -14,11 +14,11 @@ var app = express();
 /** Add connection to the public folder (client components) */
 app.use(express.static(path.join(__dirname, '/../public')));
 
+/** Add connection to the views folder (client components) */
+app.use(express.static(path.join(__dirname, '/../views')));
+
 /** Add connection to the app folder (server components) */
 app.use(express.static(path.join(__dirname, '/../app')));
-
-/** Add connection to the main page */
-app.use(express.static(__dirname + '/../public/views'));
 
 /** Set EJS as a templating language with HTML as an extension */
 app.engine('.html', ejs.__express);
@@ -26,6 +26,7 @@ app.set('view engine', 'html');
 
 /** Static route to the main page */
 app.use('/', routes);
+app.use('/*', routes);
 
 /** Catch 404 and forward to error handler */
 app.use(function(req, res, next) {
