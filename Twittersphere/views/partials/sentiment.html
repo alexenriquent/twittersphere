@@ -1,11 +1,14 @@
-<div ng-controller="ChartCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
+<div ng-controller="SentimentCtrl" layout="vertical" layout-lg="horizontal" layout-padding>
   <div class="row">
     <div class="chart-title"><h2>Sentiment Analysis</h2></div>
     <div class="col-md-6">
       <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
     </div> <!-- column-md-6 -->
   </div> <!-- row -->
-  <div ng-model="result" ng-click="getNextLiveLine(result)" style="text-align: center">
-    {{result}}
+  <div ng-model="result" style="text-align: center">
+    <p>
+      <strong>Number of Tweets:</strong> {{result.tweetNum || 0}} &thinsp;&thinsp;&thinsp;
+      <strong>Average Sentiment Score:</strong> {{result.score.toFixed(2) || 0}}
+    </p>
   </div> <!-- result -->
 </div> <!-- ChartCtrl -->
