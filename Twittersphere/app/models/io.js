@@ -27,6 +27,12 @@ module.exports = function(server) {
 
     /** Tweet counter */
     var tweetCount = 0;
+    var count = {
+      positive: 0,
+      neutral: 0,
+      negative: 0
+    };
+
     searches[socket.id] = {};
     socket.on('query', function(query) {
       if (!searches[socket.id][query]) {
@@ -42,6 +48,15 @@ module.exports = function(server) {
           /** Filter the language (English only) */
           if (tweet.lang === 'en') {
             var result = sentiment(tweet.text);
+
+            if (result.score > 0) {
+              count.positive++;
+            } else if (result.score === 0) {
+              count.neutral++;
+            } else if (result.score < 0) {
+              count.negative++;
+            }
+
             var tweetData = {
               socket: socket.id,
               tweetNum: tweetCount + 1,
@@ -83,6 +98,7 @@ module.exports = function(server) {
             var resultLength = db.sentiments.find({socket: socket.id}).length;
             var resultData = db.sentiments.find({socket: socket.id})[resultLength - 1];
             socket.emit('analysis', resultData);
+            socket.emit('aspect', count);
           }
         });
 
@@ -112,6 +128,9 @@ module.exports = function(server) {
       delete searches[socket.id][query];
       console.log('Remove search:', query);
       tweetCount = 0;
+      count.positive = 0;
+      count.neutral = 0;
+      count.negative = 0;
       db.tweets.remove({socket: socket.id});
       db.sentiments.remove({socket: socket.id});
     });
@@ -126,6 +145,9 @@ module.exports = function(server) {
       console.log('Number of Tweets:', tweetCount);
       console.log('Remove', socket.id);
       tweetCount = 0;
+      count.positive = 0;
+      count.neutral = 0;
+      count.negative = 0;
       db.tweets.remove({socket: socket.id});
       db.sentiments.remove({socket: socket.id});
     });
