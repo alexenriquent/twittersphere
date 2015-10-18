@@ -3,5 +3,5 @@ $ ssh alex@twittersphere.cloudapp.net -p22
 $ ssh alex@twittersphere.cloudapp.net -p58044
 
 Docker
-sudo docker build -t alexenriquent/twittersphere .
-sudo docker run --restart=always -p 80:8080 -d alexenriquent/twittersphere
+$ sudo docker build -t alexenriquent/twittersphere .
+$ sudo docker run --restart=always -p 80:8080 -d alexenriquent/twittersphere
