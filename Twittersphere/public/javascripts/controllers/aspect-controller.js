@@ -3,9 +3,9 @@ app.controller('AspectCtrl', ['$scope', 'socket', function($scope, socket) {
   var timestamp = ((new Date()).getTime() / 1000) | 0;
   
   $scope.realtimeLine = [
-    {values: [{time: timestamp, y: 0}]},
-    {values: [{time: timestamp, y: 0}]},
-    {values: [{time: timestamp, y: 0}]}
+    {label: 'A', values: [{time: timestamp, y: 0}]},
+    {label: 'B', values: [{time: timestamp, y: 0}]},
+    {label: 'C', values: [{time: timestamp, y: 0}]}
   ];
 
   $scope.getNextLiveLine = function(data) {

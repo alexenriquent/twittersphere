@@ -56,6 +56,10 @@ html, body {
   background: #ffffff;
 }
 
+md-tabs{
+ 
+}
+
 .panels md-tabs {
   background: #303FA0;
 }
@@ -70,8 +74,9 @@ html, body {
 
 .panels .collection-text {
   margin-bottom: 32px;
-  height: 500px;
-  overflow: scroll;
+  height: 540px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #content-container {
@@ -103,8 +108,8 @@ html, body {
 }
 
 #submit-button {
-  max-height: 40px;
-  margin-top: 20px;
+  max-height: 30px;
+  margin-top: 30px;
   width: 80px;
 }
 
@@ -241,7 +246,6 @@ html, body {
 }
 
 
-
 @media (max-width: 700px) {
   .footerRight{
     text-align: center;
@@ -250,4 +254,73 @@ html, body {
   .footerLeft{
     text-align: center;
   }
+}
+
+.md-whiteframe-z1{
+  margin-bottom: 20px;
+  padding: 0px 0px 10px 0px;
+}
+
+#senchart .a .line{
+  stroke:#03a9f4;
+}
+
+
+#aspectchart .a .line{
+  stroke:#03a9f4;
+}
+
+#aspectchart .b .line{
+  stroke:#993300;
+}
+
+#aspectchart .c .line{
+  stroke:#00CC00;
+}
+
+.material-icons{
+  font-size: 30px;
+}
+
+.material-icons.red{
+  color: #993300;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.material-icons.yellow{
+  color: #00CC00;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.material-icons.blue{
+  color: #03a9f4;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.gaugecenter{
+    margin: auto;
+    padding: 10px;
+}
+
+#cpugauge.epoch .gauge .needle-base {
+    fill: #336600;
+}
+
+#cpugauge.epoch .gauge .needle {
+    fill: #33CC00;
+}
+
+#cpugauge .epoch .gauge .arc.outer {
+    stroke-width: 5px;
+    stroke: #303FA0;
+}
+
+#cpugauge .epoch .gauge .arc.inner {
+    stroke: rgb(63,81,181);
 }

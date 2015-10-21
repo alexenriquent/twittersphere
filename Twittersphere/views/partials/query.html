@@ -1,9 +1,7 @@
-<div class="col-md-12">
 <form class="text" ng-submit="add(hashtags)" flex>
-  <div id="input-container" layout="horizontal" layout-padding layout-align="center">
-  <span id="search-title" class="title"><i class="material-icons">search</i>Search:</span>
-  <md-text-float label="hashtags" ng-model="hashtags"></md-text-float>
-  <md-button id="submit-button" class="md-primary" type="submit" ng-disabled="!hashtags" aria-label="Add New Search">Stream</md-button>
-  </div> <!-- input-container -->
+	<div id="input-container" layout="row" layout-padding layout-align="center">
+	<span id="search-title" class="title"><i class="material-icons">search</i></span>
+	<md-text-float label="hashtags" ng-model="hashtags"></md-text-float>
+	<md-button id="submit-button" class="md-raised md-primary"  ng-disabled="!hashtags" aria-label="Add New Search">Stream</md-button>
+	</div> <!-- input-container -->
 </form>
-</div>

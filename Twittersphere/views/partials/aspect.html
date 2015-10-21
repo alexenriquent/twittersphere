@@ -1,15 +1,20 @@
 <div ng-controller="AspectCtrl" layout="vertical" layout-padding>
-  <div class="row">
-    <div class="chart-title"><h2>Aspects</h2></div>
-    <div class="col-md-6">
-      <epoch-live-line chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes"></epoch-live-line>
-    </div> <!-- column-md-6 -->
-  </div> <!-- row -->
+  <div class="chart-title"><h2>Aspects</h2></div>
+  <epoch-live-line id="aspectchart" chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes" class="md-whiteframe-z1"></epoch-live-line>
+
   <div ng-model="aspect" style="text-align: center">
-    <p>
-      <strong>Positive Tweets:</strong> {{aspect.positive || 0}} &thinsp;&thinsp;&thinsp;
-      <strong>Neutral Tweets:</strong> {{aspect.neutral || 0}} &thinsp;&thinsp;&thinsp;
-      <strong>Negative Tweets:</strong> {{aspect.negative || 0}}
-    </p>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col">
+        <p><i class="material-icons yellow">mood</i> {{aspect.positive || 0}} </p>
+      </div>
+
+      <div class="mdl-cell mdl-cell--4-col">
+        <p><i class="material-icons blue">help</i>{{aspect.neutral || 0}}</p>
+      </div>
+
+      <div class="mdl-cell mdl-cell--4-col">
+        <p><i class="material-icons red">mood_bad</i> {{aspect.negative || 0}}</p>
+      </div>
+    </div><!-- grid -->
   </div> <!-- result -->
 </div> <!-- ChartCtrl -->

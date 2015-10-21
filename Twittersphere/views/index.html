@@ -32,30 +32,31 @@
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">Twittersphere</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="#sen">Sentiment Analysis</a>
-        <a class="mdl-navigation__link" href="#asp">Aspects</a>
-        <a class="mdl-navigation__link" href="#feed">Twitter Feed</a>
-        <a class="mdl-navigation__link" href="#cpu">CPU Usage</a>
-      </nav>
     </div>
   </header>
 
   <main class="mdl-layout__content">
     <div ng-controller="StreamCtrl" class="panels">
-          <div ng-include="'/partials/query.html'"></div>
-          <div id="sen" ng-include="'/partials/sentiment.html'"></div>
-          <div id="asp" ng-include="'/partials/aspect.html'"></div>
-          <div id="feed" ng-include="'/partials/content.html'"></div>
-          <div id="cpu" ng-include="'/partials/usage.html'"></div>
+
+      <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <div ng-include="'/partials/query.html'"></div>
+          </div>
+
+          <div class="mdl-cell mdl-cell--8-col">
+            <div id="sen" ng-include="'/partials/sentiment.html'"></div>
+            <div id="asp" ng-include="'/partials/aspect.html'"></div>
+            
+          </div>
+
+          <div class="mdl-cell mdl-cell--4-col">
+            <div id="feed" ng-include="'/partials/content.html'"></div>
+            <div id="cpu" ng-include="'/partials/usage.html'"></div>
+          </div>
+          
+      </div><!-- grid -->
     </div> <!-- panels -->
-
- 
     <div ng-include="'/partials/footer.html'"></div>
-
   </main>
 </div>
 
