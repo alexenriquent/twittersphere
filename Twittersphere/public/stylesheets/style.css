@@ -53,15 +53,15 @@ html, body {
 }
 
 .panels {
-  background: #ffffff;
-}
-
-md-tabs{
- 
+  background: linear-gradient(#F8F8F8 , white);
 }
 
 .panels md-tabs {
-  background: #303FA0;
+  background: #6ccff6;
+  background-image: url("/images/twitterbg.jpg");
+  background-repeat: no-repeat;
+  background-position: left; 
+ 
 }
 
 .panels md-tab {
@@ -261,11 +261,17 @@ md-tabs{
   padding: 0px 0px 10px 0px;
 }
 
+#senchart{
+  background: white;
+}
+
 #senchart .a .line{
   stroke:#03a9f4;
 }
 
-
+#aspectchart{
+  background: white;
+}
 #aspectchart .a .line{
   stroke:#03a9f4;
 }
@@ -309,18 +315,18 @@ md-tabs{
 }
 
 #cpugauge.epoch .gauge .needle-base {
-    fill: #336600;
+    fill: #ffe87c;
 }
 
 #cpugauge.epoch .gauge .needle {
-    fill: #33CC00;
+    fill: #ffe87c;
 }
 
 #cpugauge .epoch .gauge .arc.outer {
     stroke-width: 5px;
-    stroke: #303FA0;
+    stroke:  #0caff6;
 }
 
 #cpugauge .epoch .gauge .arc.inner {
-    stroke: rgb(63,81,181);
+    stroke:  #6ccff6;
 }

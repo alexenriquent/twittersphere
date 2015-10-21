@@ -35,18 +35,17 @@
     </div>
   </header>
 
+  
+
   <main class="mdl-layout__content">
     <div ng-controller="StreamCtrl" class="panels">
+      
+      <div ng-include="'/partials/query.html'"></div>
 
       <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">
-            <div ng-include="'/partials/query.html'"></div>
-          </div>
-
           <div class="mdl-cell mdl-cell--8-col">
             <div id="sen" ng-include="'/partials/sentiment.html'"></div>
             <div id="asp" ng-include="'/partials/aspect.html'"></div>
-            
           </div>
 
           <div class="mdl-cell mdl-cell--4-col">
