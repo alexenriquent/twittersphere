@@ -6,8 +6,8 @@ var sentiment = require('./sentiment');
 var db = require('diskdb');
 
 /** Database connection */
-//db = db.connect('src/app/db', ['tweets', 'sentiments']);
-db = db.connect('app/db', ['tweets', 'sentiments']);
+db = db.connect('src/app/db', ['tweets', 'sentiments']);
+// db = db.connect('app/db', ['tweets', 'sentiments']);
 
 /** Export the module */
 module.exports = function(server) {
