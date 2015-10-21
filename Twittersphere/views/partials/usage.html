@@ -1,13 +1,21 @@
-<div ng-controller="CPUCtrl">
-  <div class="row">
-  <div class="chart-title"><h2>CPU Usage</h2></div>
-    <div class="col-md-6">
-      <epoch-live-area chart-class="category10" chart-height="200" chart-data="realtimeArea" chart-stream="realtimeAreaFeed" chart-axes="areaAxes"></epoch-live-area>
-    </div> <!-- column-md-6 -->
-  </div> <!-- row -->
+<div ng-controller="CPUCtrl" layout="vertical" layout-padding>
+
+	<div class="gaugecenter">
+		<epoch-gauge id="cpugauge" gauge-value="gauge" gauge-stream="gaugeFeed"></epoch-gauge>
+	</div>
+
+  <!--
+	<div class="chart-title"><h2>CPU Usage</h2></div>
+  	<epoch-live-area chart-class="category10" chart-height="200" chart-data="realtimeArea" chart-stream="realtimeAreaFeed" chart-axes="areaAxes"></epoch-live-area>
+  -->
+
   <div ng-model="usage" style="text-align: center">
     <p>
+    	<!--
       <strong>CPU Usage:</strong> {{usage.toFixed(2)}} % <br/>
+      -->
+      <strong>CPU Usage</strong>
     </p>
   </div>
 </div>
+

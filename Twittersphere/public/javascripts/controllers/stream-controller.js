@@ -11,6 +11,7 @@ app.controller('StreamCtrl', ['$scope', 'socket', function($scope, socket) {
     if ($scope.hashtags) {
       $scope.add($scope.hashtags);
     }
+    
   };
 
   $scope.add = function(query) {

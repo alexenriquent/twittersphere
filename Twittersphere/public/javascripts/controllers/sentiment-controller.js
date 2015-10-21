@@ -2,7 +2,7 @@
 app.controller('SentimentCtrl', ['$scope', 'socket', function($scope, socket) {
   var timestamp = ((new Date()).getTime() / 1000) | 0;
   
-  $scope.realtimeLine = [{values: [{time: timestamp, y: 0}]}];
+  $scope.realtimeLine = [{label: 'A', values: [{time: timestamp, y: 0}]}];
 
   $scope.getNextLiveLine = function(data) {
     $scope.realtimeLineFeed = data;

@@ -5,7 +5,7 @@ html, body {
 }
 
 .mdl-body .mdl-layout__header-row {
-  padding-left: 40px;
+  padding-left: 50px;
 }
 
 .mdl-body .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
@@ -53,11 +53,15 @@ html, body {
 }
 
 .panels {
-  background: #ffffff;
+  background: linear-gradient(#F8F8F8 , white);
 }
 
 .panels md-tabs {
-  background: #303FA0;
+  background: #6ccff6;
+  background-image: url("/images/twitterbg.jpg");
+  background-repeat: no-repeat;
+  background-position: left; 
+ 
 }
 
 .panels md-tab {
@@ -70,8 +74,9 @@ html, body {
 
 .panels .collection-text {
   margin-bottom: 32px;
-  height: 500px;
-  overflow: scroll;
+  height: 540px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #content-container {
@@ -103,8 +108,8 @@ html, body {
 }
 
 #submit-button {
-  max-height: 40px;
-  margin-top: 20px;
+  max-height: 30px;
+  margin-top: 30px;
   width: 80px;
 }
 
@@ -228,4 +233,100 @@ html, body {
 
 .chart-title {
   text-align: center;
+}
+
+
+.footerLeft{
+  color: white;
+}
+
+.footerRight{
+  text-align: right;
+  color: white;
+}
+
+
+@media (max-width: 700px) {
+  .footerRight{
+    text-align: center;
+  }
+
+  .footerLeft{
+    text-align: center;
+  }
+}
+
+.md-whiteframe-z1{
+  margin-bottom: 20px;
+  padding: 0px 0px 10px 0px;
+}
+
+#senchart{
+  background: white;
+}
+
+#senchart .a .line{
+  stroke:#03a9f4;
+}
+
+#aspectchart{
+  background: white;
+}
+#aspectchart .a .line{
+  stroke:#03a9f4;
+}
+
+#aspectchart .b .line{
+  stroke:#993300;
+}
+
+#aspectchart .c .line{
+  stroke:#00CC00;
+}
+
+.material-icons{
+  font-size: 30px;
+}
+
+.material-icons.red{
+  color: #993300;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.material-icons.yellow{
+  color: #00CC00;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.material-icons.blue{
+  color: #03a9f4;
+  font-size: 40px;
+  padding-right: 30px;
+  vertical-align:middle;
+}
+
+.gaugecenter{
+    margin: auto;
+    padding: 10px;
+}
+
+#cpugauge.epoch .gauge .needle-base {
+    fill: #ffe87c;
+}
+
+#cpugauge.epoch .gauge .needle {
+    fill: #ffe87c;
+}
+
+#cpugauge .epoch .gauge .arc.outer {
+    stroke-width: 5px;
+    stroke:  #0caff6;
+}
+
+#cpugauge .epoch .gauge .arc.inner {
+    stroke:  #6ccff6;
 }
