@@ -272,6 +272,7 @@ html, body {
 #aspectchart{
   background: white;
 }
+
 #aspectchart .a .line{
   stroke:#03a9f4;
 }
