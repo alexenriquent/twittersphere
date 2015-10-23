@@ -57,10 +57,11 @@ html, body {
 }
 
 .panels md-tabs {
-  background: #6ccff6;
-  background-image: url("/images/twitterbg.jpg");
+  background: #3F51B5;
+  background-image: url("/images/twitter120.jpg");
   background-repeat: no-repeat;
   background-position: left; 
+  margin-top: 8px;
  
 }
 
@@ -332,7 +333,7 @@ html, body {
 
 #cpugauge .epoch .gauge .arc.outer {
     stroke-width: 5px;
-    stroke:  #0caff6;
+    stroke:  #3F51B5;
 }
 
 #cpugauge .epoch .gauge .arc.inner {
