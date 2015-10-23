@@ -9,7 +9,7 @@ var routes = require('../app/routes/index');
 var app = express();
 
 /** Use Morgan - Log requests to the terminal console */
-// app.use(logger('dev'));
+app.use(logger('dev'));
 
 /** Add connection to the public folder (client components) */
 app.use(express.static(path.join(__dirname, '/../public')));
