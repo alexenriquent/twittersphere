@@ -233,16 +233,20 @@ html, body {
 
 .chart-title {
   text-align: center;
+  font-size: 0.9em;
+  color: #03a9f4;
 }
 
 
 .footerLeft{
   color: white;
+  font-family: 'ABeeZee', sans-serif;
 }
 
 .footerRight{
   text-align: right;
   color: white;
+  font-family: 'ABeeZee', sans-serif;
 }
 
 
