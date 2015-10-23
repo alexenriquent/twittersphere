@@ -20,13 +20,19 @@ app.use(express.static(path.join(__dirname, '/../views')));
 /** Add connection to the app folder (server components) */
 app.use(express.static(path.join(__dirname, '/../app')));
 
+/** Add connection to the views folder */
+app.set('appPath', path.join(__dirname, '/../views'));
+
 /** Set EJS as a templating language with HTML as an extension */
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 /** Static route to the main page */
 app.use('/', routes);
-app.use('/*', routes);
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
+});
 
 /** Catch 404 and forward to error handler */
 app.use(function(req, res, next) {
