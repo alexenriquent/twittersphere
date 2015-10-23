@@ -1,7 +1,7 @@
 SSH Login
 $ ssh alex@twittersphere.cloudapp.net -p22
 $ ssh alex@twittersphere.cloudapp.net -p58044
-$ ssh alex@twittersphere.cloudapp.net -p58088
+$ ssh alex@twittersphere.cloudapp.net -p61690
 
 Docker
 $ sudo docker build -t alexenriquent/twittersphere .
