@@ -8,12 +8,10 @@ app.controller('CPUCtrl', ['$scope', 'socket', function($scope, socket) {
     $scope.realtimeAreaFeed = data;
   }
 
-
   $scope.gauge = 0.5;
   $scope.getNextGauge = function(data) {
       $scope.gaugeFeed = data;
-    }
-
+  }
 
   socket.on('usage', function(usage) {
     var timestamp = ((new Date()).getTime() / 1000) | 0;

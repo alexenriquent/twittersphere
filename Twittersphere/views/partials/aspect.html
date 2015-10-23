@@ -1,8 +1,8 @@
 <div ng-controller="AspectCtrl" layout="vertical" layout-padding>
-  <div class="chart-title"><h2>Aspects</h2></div>
+  <div class="chart-title md-whiteframe-z2"><h2>Aspects</h2></div>
   <epoch-live-line id="aspectchart" chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes" class="md-whiteframe-z1"></epoch-live-line>
 
-  <div ng-model="aspect" style="text-align: center">
+  <div id="aspect" ng-model="aspect">
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--4-col">
         <p><i class="material-icons yellow">mood</i> {{aspect.positive || 0}} </p>

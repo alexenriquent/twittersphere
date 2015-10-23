@@ -234,9 +234,9 @@ html, body {
 .chart-title {
   text-align: center;
   font-size: 0.9em;
-  color: #03a9f4;
+  /*color: #03a9f4;*/
+  color: #ffffff;
 }
-
 
 .footerLeft{
   color: white;
@@ -248,7 +248,6 @@ html, body {
   color: white;
   font-family: 'ABeeZee', sans-serif;
 }
-
 
 @media (max-width: 700px) {
   .footerRight{
@@ -263,6 +262,10 @@ html, body {
 .md-whiteframe-z1{
   margin-bottom: 20px;
   padding: 0px 0px 10px 0px;
+}
+
+.md-whiteframe-z2 {
+  background: #3F51B5;
 }
 
 #senchart{
@@ -314,7 +317,7 @@ html, body {
   vertical-align:middle;
 }
 
-.gaugecenter{
+.gaugecenter {
     margin: auto;
     padding: 10px;
 }
@@ -335,3 +338,16 @@ html, body {
 #cpugauge .epoch .gauge .arc.inner {
     stroke:  #6ccff6;
 }
+
+#sentiment {
+  text-align: center;
+}
+
+#aspect {
+  text-align: center;
+}
+
+#usage {
+  text-align: center;
+}
+

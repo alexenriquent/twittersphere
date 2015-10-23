@@ -1,10 +1,10 @@
 <div ng-controller="SentimentCtrl" layout="vertical" layout-padding>
-    <div class="chart-title"><h2>Sentiment Analysis</h2></div>
+    <div class="chart-title md-whiteframe-z2"><h2>Sentiment Analysis</h2></div>
     <div style="width: 100%;">
       <epoch-live-line id = "senchart" chart-class="category10" chart-height="200" chart-data="realtimeLine" chart-stream="realtimeLineFeed" chart-axes="areaAxes" class="md-whiteframe-z1"></epoch-live-line>
     </div>
 
-  <div ng-model="result" style="text-align: center">
+  <div id="sentiment" ng-model="result">
       <p><strong>Number of Tweets:</strong> {{result.tweetNum || 0}} &thinsp;&thinsp;&thinsp;
       <strong>Average Sentiment Score:</strong> {{result.score.toFixed(2) || 0}}</p>
   </div> <!-- result -->
